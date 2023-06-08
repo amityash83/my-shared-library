@@ -1,20 +1,12 @@
-@Library(['my-shared-library']) _
-
-library identifier: 'my-shared-library@main', retriever: modernSCM([$class: 'GitSCMSource',
-    remote: 'https://github.com/amityash83/my-shared-library.git'
-])
+// Jenkinsfile
+@Library('my-pipeline-repo') _
 
 pipeline {
     agent any
-
     stages {
-        stage('Example Stage') {
+        stage('Build') {
             steps {
-                script {
-                    libraryA.libraryAMethod()
-                    libraryB.libraryBMethod()
-                    shared.sharedMethod()
-                }
+                myCustomStep()
             }
         }
     }
